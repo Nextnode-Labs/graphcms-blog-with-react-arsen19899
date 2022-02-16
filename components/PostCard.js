@@ -4,10 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 
-const PostCard = ({ post }) => {
-
-
-        return(
+const PostCard = ({ post }) => (
     <div className="bg-white shadow-lg rounded-lg p-0 lg:p-8 pb-12 mb-8">
 
         <div className="relative overflow-hidden shadow-md pb-80 mb-6">
@@ -44,7 +41,7 @@ const PostCard = ({ post }) => {
                 <span className="transition duration-500 ease transform hover:-translate-y-1 inline-block bg-pink-600 text-lg font-medium rounded-full text-white px-8 py-3 cursor-pointer">Continue Reading</span>
             </Link>
         </div>
-    </div>)
-};
+    </div>
+);
 
 export default PostCard;
