@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-
+import { useUser } from '@auth0/nextjs-auth0'
 import Link from 'next/link';
 import { getCategories } from '../services';
 
 const Header = () => {
   const [categories, setCategories] = useState([]);
+  const { user, error, isLoading } = useUser()
 
   useEffect(() => {
     getCategories().then((newCategories) => {
@@ -24,6 +25,28 @@ const Header = () => {
           {categories.map((category, index) => (
             <Link key={index} href={`/category/${category.slug}`}><span className="md:float-right mt-2 align-middle text-white ml-4 font-semibold cursor-pointer">{category.name}</span></Link>
           ))}
+          <span className="ml-4 align-middle font-semibold text-white md:float-right">
+            {user && (
+                <div className="flex h-16 flex-row gap-x-2 ">
+                  <div className="mt-2">
+                    <Link href={`/api/auth/logout`}>Logout</Link>
+                  </div>
+                  <img className='rounded-full'
+                       src={user.picture}
+                       alt={user.name}
+                  />
+                  <div className="flex flex-col justify-around px-2 text-xs">
+                    <h2>{'Name: ' + user.name}</h2>
+                    <p>{'Email: ' + user.email}</p>
+                  </div>
+                </div>
+            )}
+            {!user && (
+                <div className="mt-2">
+                  <Link href={`/api/auth/login`}>Login</Link>
+                </div>
+            )}
+          </span>
         </div>
       </div>
     </div>
