@@ -20,11 +20,11 @@ const PostDetails = ({ post }) => {
         <PostDetail post={post} />
     <Author author={post.author} />
     <AdjacentPosts slug={post.slug} createdAt={post.createdAt} />
-
-    <CommentsForm slug={post.slug} />
             {user && (
+    <CommentsForm slug={post.slug} />
+            )}
     <Comments slug={post.slug} />
-        )}
+
             {!user && (
               <span> login to comment</span>
             )}
