@@ -25,7 +25,7 @@ const Header = () => {
           {categories.map((category, index) => (
             <Link key={index} href={`/category/${category.slug}`}><span className="md:float-right mt-2 align-middle text-white ml-4 font-semibold cursor-pointer">{category.name}</span></Link>
           ))}
-          <span className="ml-4 align-middle font-semibold text-white md:float-right">
+          <span className="md:float-right mt-2 align-middle text-white ml-4 font-semibold cursor-pointer">
             {user && (
                 <div className="flex h-16 flex-row gap-x-2 ">
                   <div className="mt-2">
